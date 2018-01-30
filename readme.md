@@ -6,6 +6,10 @@ Installation des composants nécessaires :
 
 `composer install`
 
+Configurer la base de données : spécifier le chemin d'accès du fichier sqlite.
+
+`DB_DATABASE="path"`
+
 Installation de la base de données :
 
 `php artisan migrate`
