@@ -19,8 +19,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
                             @foreach ($groups as $group)
                                 <tr>
                                     <td>{!! $group->id !!}</td>
