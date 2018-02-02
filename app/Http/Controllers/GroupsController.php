@@ -17,7 +17,7 @@ class GroupsController extends Controller
     public function show(Group $group) {
 
 
-        return view('groups.form', compact('group'));
+        return view('groups.show', compact('group'));
     }
 
     public function create() {

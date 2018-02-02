@@ -23,7 +23,7 @@
                             @foreach ($groups as $group)
                                 <tr>
                                     <td>{!! $group->id !!}</td>
-                                    <td><a href="">{!! $group->name !!}</a></td>
+                                    <td><a href="{!! route('groups.show', $group->id)!!}">{!! $group->name !!}</a></td>
                                     <td>{!! $group->created_at !!}</td>
                                     <td>{!! $group->updated_at !!}</td>
                                 </tr>
