@@ -17,6 +17,7 @@
                                 <th>Creation date</th>
                                 <th>Updated date</th>
                             </tr>
+
                             </thead>
                             <tbody>
                             @foreach ($groups as $group)
