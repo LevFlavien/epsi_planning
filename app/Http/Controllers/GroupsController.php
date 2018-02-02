@@ -18,7 +18,7 @@ class GroupsController extends Controller
 
         $homeworks = $group->homework;
 
-        return view('groups.show', compact('group'));
+        return view('groups.show', compact('group', 'homeworks'));
     }
 
 
@@ -29,9 +29,6 @@ class GroupsController extends Controller
 
     public function form() {
 
-//        $test = ['a'=>7,'t'=>8,'z'=>9];
-//
-//        dump($test);die;
         return view('groups.form');
     }
 
