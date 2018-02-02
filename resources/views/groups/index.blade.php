@@ -12,7 +12,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>id</th>
+                                <th>#</th>
                                 <th>Name</th>
                                 <th>Creation date</th>
                                 <th>Updated date</th>

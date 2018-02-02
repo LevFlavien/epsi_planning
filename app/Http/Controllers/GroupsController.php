@@ -16,6 +16,7 @@ class GroupsController extends Controller
 
     public function show(Group $group) {
 
+
         $homeworks = $group->homework;
 
         return view('groups.show', compact('group', 'homeworks'));
