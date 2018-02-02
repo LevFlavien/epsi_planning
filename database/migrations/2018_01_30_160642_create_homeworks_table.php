@@ -15,6 +15,7 @@ class CreateHomeworksTable extends Migration
     {
         Schema::create('homeworks', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('group_id');
             $table->string('name');
             $table->string('description');
             $table->timestamps();

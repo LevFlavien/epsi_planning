@@ -2,7 +2,7 @@
 
 #### Pré-requis :
 
-Dans le fichier `.env`, spécifier le chemin d'accès de la base de donnée SQLite et la clé d'API Dropbox.
+Dans le fichier `.env`, spécifier le chemin d'accès de la base de donnée SQLite et la clé d'API Dropbox. Créer un fichier `db.sqlite` vide si nécessaire.
 
 ```
 DB_DATABASE="path/to/db.sqlite"
@@ -15,7 +15,9 @@ Installation des composants nécessaires :
 
 Installation de la base de données :
 
-`php artisan migrate`
+```
+php artisan migrate
+```
 
 #### (Optionnel) Développement front-end :
 

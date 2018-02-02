@@ -16,6 +16,7 @@ class GroupsController extends Controller
 
     public function show(Group $group) {
 
+        $homeworks = $group->homework;
 
         return view('groups.show', compact('group'));
     }
@@ -34,10 +35,10 @@ class GroupsController extends Controller
         return view('groups.form');
     }
 
-    public function store(Group $group) {
+    public function store() {
 
-        $group::create();
+        Group::create(request()->all());
 
-        return redirect('groups.index');
+        return redirect()->route('groups');
     }
 }
