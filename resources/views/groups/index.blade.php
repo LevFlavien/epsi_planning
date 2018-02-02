@@ -32,7 +32,7 @@
                             </tbody>
                         </table>
 
-
+                      <a href="{!! route('form')!!}">{!! BootForm::submit('Create new group') !!}</a>
                     </div>
                 </div>
             </div>

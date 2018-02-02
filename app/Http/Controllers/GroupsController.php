@@ -20,8 +20,17 @@ class GroupsController extends Controller
         return view('groups.show', compact('group'));
     }
 
+
     public function create() {
 
+        return view('groups.form');
+    }
+
+    public function form() {
+
+//        $test = ['a'=>7,'t'=>8,'z'=>9];
+//
+//        dump($test);die;
         return view('groups.form');
     }
 
