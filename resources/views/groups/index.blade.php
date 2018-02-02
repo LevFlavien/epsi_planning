@@ -9,17 +9,24 @@
 
                     <div class="panel-body">
 
-                        <table>
-                            <thead></thead>
-                            <tbody>
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <th>#</th>
-                                <th></th>
+                                <th>id</th>
+                                <th>Name</th>
+                                <th>Creation date</th>
+                                <th>Updated date</th>
                             </tr>
+                            </thead>
+                            <tbody>
+
+
                             @foreach ($groups as $group)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{!! $group->id !!}</td>
+                                    <td><a href="">{!! $group->name !!}</a></td>
+                                    <td>{!! $group->created_at !!}</td>
+                                    <td>{!! $group->updated_at !!}</td>
                                 </tr>
                             @endforeach
 
