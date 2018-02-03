@@ -13,4 +13,11 @@ class HomeworkController extends Controller
 
         return view('homework.show', compact('group', 'homework'));
     }
+
+    public function form() {
+
+        return view('homework.form');
+    }
+
+
 }

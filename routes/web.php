@@ -19,3 +19,5 @@ Route::get('/groups/{group}/homework/{homework}', 'HomeworkController@show')->na
 Route::get('/file/', 'FilesController@store')->name('files.store');
 Route::post('/file/', 'FilesController@store')->name('files.store');
 Route::get('/file/create', 'FilesController@create')->name('files.create');
+
+Route::get('/homework/form', 'HomeworkController@form')->name('homework.form');
