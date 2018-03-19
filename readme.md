@@ -2,16 +2,30 @@
 
 #### Pré-requis :
 
-Dans le fichier `.env`, spécifier le chemin d'accès de la base de donnée SQLite et la clé d'API Dropbox. Créer un fichier `db.sqlite` vide si nécessaire.
+Générer le fichier `.env` et la clé d'application :
 
 ```
-DB_DATABASE="path/to/db.sqlite"
+cp .env.example .env
+php artisan key:generate
+```
+
+Dans le fichier `.env`, spécifier le chemin d'accès de la base de donnée SQLite et la clé d'API Dropbox. Créer un fichier `database.sqlite` vide si nécessaire dans le répertoire `/database`.
+
+```
 DROPBOX_API_KEY="key"
+```
+
+(Optionnel) Pour spécifier manuellement le chemin de la base, utiliser la variable suivante :
+
+```
+DB_DATABASE="path/to/database.sqlite"
 ```
 
 Installation des composants nécessaires :
 
-`composer install`
+```
+composer install
+```
 
 Installation de la base de données :
 
@@ -23,14 +37,20 @@ php artisan migrate
 
 Installation des packages :
 
-`npm install`
+```
+npm install
+```
 
 Compilation des assets :
 
-`npm run dev`
+```
+ run dev
+ ```
 
 #### Lancement de l'application
 
 Utiliser le serveur built-in :
 
-`php artisan serve`
+```
+php artisan serve
+```
