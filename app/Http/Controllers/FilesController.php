@@ -14,6 +14,10 @@ class FilesController extends Controller
 
     }
 
+    public function form() {
+
+    }
+
     public function create(Group $group) {
 
         return view('files.form', compact('group'));

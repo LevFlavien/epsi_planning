@@ -42,7 +42,7 @@
 
                             </tbody>
                         </table>
-                        <a href="{!! route('homework.form')!!}"><button class="btn btn-primary"> Ajouter devoir</button></a>
+                        <a href="{!! route('homework.form', $group->id)!!}"><button class="btn btn-primary"> Ajouter devoir</button></a>
 
 
 

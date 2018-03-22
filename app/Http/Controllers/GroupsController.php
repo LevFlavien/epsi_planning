@@ -16,17 +16,11 @@ class GroupsController extends Controller
 
     public function show(Group $group) {
 
-
         $homeworks = $group->homework;
 
         return view('groups.show', compact('group', 'homeworks'));
     }
 
-
-    public function create() {
-
-        return view('groups.form');
-    }
 
     public function form() {
 

@@ -5,20 +5,17 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Ajouter des devoirs</div>
+                    <div class="panel-heading">Nouveau devoir</div>
 
                     <div class="panel-body">
-                        {{--{!! BootForm::open(['model' => $group ?? new App\Group(), 'url' => route('groups.store'), 'method' => 'POST']) !!}--}}
+                        {!! BootForm::open(['model' => $homework ?? new App\Homework(), 'url' => route('homework.store', $group->id), 'method' => 'POST']) !!}
 
-
-                        {!! BootForm::text('name', 'Nom de la matière', null, ['required' ])!!}
-                        {!! BootForm::text('description', 'Description', null, ['required' ])!!}
-
+                        {!! BootForm::text('name', 'Nom', null, ['required' ])!!}
+                        {!! BootForm::text('description', 'Description')!!}
+                        {!! BootForm::hidden('group_id', $group->id) !!}
                         {!! BootForm::submit() !!}
 
                         {!! BootForm::close() !!}
-
-
 
                     </div>
                 </div>

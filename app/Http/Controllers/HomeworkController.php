@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Group;
 use App\Homework;
 
@@ -14,10 +13,16 @@ class HomeworkController extends Controller
         return view('homework.show', compact('group', 'homework'));
     }
 
-    public function form() {
+    public function form(Group $group) {
 
-        return view('homework.form');
+        return view('homework.form', compact('group'));
     }
 
+    public function store(Group $group) {
+
+        Homework::create(request()->all());
+
+        return redirect()->route('groups.show', compact('group'));
+    }
 
 }

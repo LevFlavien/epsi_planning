@@ -17,7 +17,7 @@ class CreateHomeworksTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('group_id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

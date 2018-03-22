@@ -14,8 +14,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
-                                <th>Creation date</th>
-                                <th>Updated date</th>
+                                <th>Date de création</th>
+                                <th>Date de mise à jour</th>
                             </tr>
 
                             </thead>
@@ -32,7 +32,7 @@
                             </tbody>
                         </table>
 
-                      <a href="{!! route('form')!!}">{!! BootForm::submit('Create new group') !!}</a>
+                      <a href="{!! route('groups.form')!!}">{!! BootForm::submit('Ajouter un groupe') !!}</a>
                     </div>
                 </div>
             </div>
