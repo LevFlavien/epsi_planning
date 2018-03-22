@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
 
-                        {!! BootForm::open(['model' => $file ?? new App\File(), 'url' => route('files.upload', ['group' => $group->id]), 'method' => 'POST']) !!}
+                        {!! BootForm::open(['model' => $file ?? new App\File(), 'files' => 'true', 'url' => route('files.store', ['group' => $group->id, 'homework' => $homework->id]), 'method' => 'POST']) !!}
 
                             {!! BootForm::file('name') !!}
 

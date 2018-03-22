@@ -2,23 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use GuzzleHttp\Client;
 use App\Group;
 use App\File;
+use App\Homework;
+use App\Http\Requests\FilesRequest;
 
 class FilesController extends Controller
 {
-    public function index() {
 
+    public function form(Group $group, Homework $homework) {
+
+        return view('files.form', compact(['group', 'homework']));
     }
 
-    public function form() {
+    public function store(FilesRequest $request, Group $group, Homework $homework, Client $client) {
 
+        $file = new File(['name' => $request['name']->getClientOriginalName(), 'homework_id' => $homework->id]);
+        Storage::put($group->id . '/' . $file->name, $request['name']);
+        $this->upload($client, $group, $file);
+        $file->save();
+
+        return redirect(route('files.form', compact(['group', 'homework'])));
     }
 
-    public function create(Group $group) {
+    public function create(Group $group, Homework $homework) {
+
+        File::create(['name' => request('name'), 'id_homework' => $homework->id]);
 
         return view('files.form', compact('group'));
     }

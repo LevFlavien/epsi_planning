@@ -14,4 +14,8 @@ class Homework extends Model
     public function group() {
         return $this->belongsTo('App\Group');
     }
+
+    public function files() {
+        return $this->hasMany('App\File');
+    }
 }

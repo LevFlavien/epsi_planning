@@ -15,7 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_homework');
+            $table->unsignedInteger('homework_id');
             $table->string('name');
             $table->timestamps();
         });
