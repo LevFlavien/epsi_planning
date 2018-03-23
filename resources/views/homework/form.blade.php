@@ -16,12 +16,12 @@
                         @if (!empty($files) && count($files) > 0)
                             <p>Fichiers actuels : </p>
                             @foreach ($files as $file)
-                                <p>{!! $file->name !!}</p>
+                                <p><a href="{!! route('files.download', ['group' => $group->id, 'homework' => $homework->id, 'file' => $file->id]) !!}">{!! $file->name !!}</a></p>
                             @endforeach
                         @endif
 
                         {!! BootForm::hidden('group_id', $group->id) !!}
-                        {!! BootForm::submit() !!}
+                        {!! BootForm::submit('Valider') !!}
                         @if (!empty($files))
                             <a class="btn btn-primary" href="{!! route('files.form', [$group->id, $homework->id]) !!}">Ajouter fichier</a>
                         @endif

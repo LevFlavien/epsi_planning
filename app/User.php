@@ -28,17 +28,17 @@ class User extends Authenticatable
     ];
 
     public function groups() {
-        return $this->belongsToMany('App\Group', 'groups_roles_users', 'id_user', 'id_group');
+        return $this->belongsToMany('App\Group', 'groups_roles_users', 'user_id', 'group_id');
             //->withPivot('id_role');
     }
 
     public function roles() {
-        return $this->belongsToMany('App\Role', 'groups_roles_users', 'id_user', 'id_role')
-            ->withPivot('id_group');
+        return $this->belongsToMany('App\Role', 'groups_roles_users', 'user_id', 'role_id')
+            ->withPivot('group_id');
     }
 
-    public function getGroupRole($id_group) {
-        return $this->roles()->wherePivot('id_group', $id_group)->get();
+    public function getGroupRole($group_id) {
+        return $this->roles()->wherePivot('group_id', $group_id)->get();
     }
 
 }

@@ -13,7 +13,8 @@
 
                             {!! BootForm::file('name') !!}
 
-                            {!! BootForm::submit() !!}
+                            {!! BootForm::submit('Envoyer') !!}
+                            <a class="btn btn-primary" href="{!! route('homework.show', [$group->id, $homework->id]) !!}">Annuler</a>
 
                         {!! BootForm::close() !!}
 

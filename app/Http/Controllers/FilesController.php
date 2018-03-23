@@ -34,7 +34,7 @@ class FilesController extends Controller
         return view('files.form', compact('group'));
     }
 
-    public function download(Client $client, Group $group, File $file) {
+    public function download(Client $client, Group $group, Homework $homework, File $file) {
 
         $client->setDefaultOption('verify', false);
         $response = $client->post('https://content.dropboxapi.com/2/files/download', [
@@ -44,9 +44,12 @@ class FilesController extends Controller
             ]
         ]);
 
-        Storage::put($group->id . '/' . $file->name, $response->getBody());
+        $headers = [
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $file->name . '"',
+        ];
 
-        return response()->download($group->id . '/' . $file->name)->deleteFileAfterSend(true);
+        return response()->make($response->getBody(), 200, $headers);
     }
 
     /**
@@ -62,8 +65,10 @@ class FilesController extends Controller
             'headers' => [
                 'Authorization' => 'Bearer ' . getenv('DROPBOX_API_KEY', 'null'),
                 'Content-Type' => 'application/octet-stream',
-                'Dropbox-API-Arg' => '{"path":"/' . $group->id . '/' . $file->name . '"}'
-            ]
+                'Dropbox-API-Arg' => '{"path":"/' . $group->id . '/' . $file->name . '", "mode":{".tag":"overwrite"}}'
+            ],
+            'body' => file_get_contents(request('name'))
+
         ]);
 
         return $response->getBody();

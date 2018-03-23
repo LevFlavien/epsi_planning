@@ -8,7 +8,7 @@ class File extends Model
 {
 
     protected $fillable = [
-        'name', 'id_homework'
+        'name', 'homework_id'
     ];
 
     public function homework() {

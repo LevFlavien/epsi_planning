@@ -14,9 +14,9 @@ class CreateGroupsRolesUsersTable extends Migration
     public function up()
     {
         Schema::create('groups_roles_users', function (Blueprint $table) {
-            $table->unsignedInteger('id_group');
-            $table->unsignedInteger('id_role');
-            $table->unsignedInteger('id_user');
+            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('role_id')->nullable();
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
 

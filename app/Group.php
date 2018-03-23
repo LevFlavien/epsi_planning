@@ -12,7 +12,11 @@ class Group extends Model
     ];
 
     public function users() {
-        return $this->belongsToMany('App\User', 'groups_roles_users', 'id_group', 'id_user');
+        return $this->belongsToMany('App\User', 'groups_roles_users', 'group_id', 'user_id');
+    }
+
+    public function admin() {
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function homework() {
