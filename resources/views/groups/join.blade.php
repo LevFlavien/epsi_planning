@@ -8,9 +8,8 @@
                     <div class="panel-heading">Nouveau groupe</div>
 
                     <div class="panel-body">
-                        {!! BootForm::open(['url' => route('groups.join'), 'method' => 'POST']) !!}
+                        {!! BootForm::open(['url' => route('groups.join', $group->id), 'method' => 'POST']) !!}
 
-                        {!! BootForm::text('name', 'Nom', null, ['required' ])!!}
                         {!! BootForm::password('password')!!}
                         {!! BootForm::submit('Rejoindre') !!}
 

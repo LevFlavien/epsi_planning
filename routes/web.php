@@ -27,6 +27,7 @@ Route::prefix('groups')->group(function() {
 
             Route::get('/{homework}/file/', 'FilesController@form')->name('files.form');
             Route::post('/{homework}/file/', 'FilesController@store')->name('files.store');
+            Route::delete('/{homework}/file/', 'FilesController@delete')->name('files.delete');
             Route::get('/{homework}/file/{file}', 'FilesController@download')->name('files.download');
         });
     });

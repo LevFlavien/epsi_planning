@@ -24,7 +24,7 @@ class FilesController extends Controller
         $this->upload($client, $group, $file);
         $file->save();
 
-        return redirect(route('files.form', compact(['group', 'homework'])));
+        return redirect()->route('groups.show', compact(['group', 'homework']));
     }
 
     public function create(Group $group, Homework $homework) {
@@ -84,6 +84,8 @@ class FilesController extends Controller
             ],
             'body' => '{"path":"/' . $group->id . '/' . $file->name . '"}'
         ]);
+
+        File::destroy($file);
 
         return $response->getBody();
     }

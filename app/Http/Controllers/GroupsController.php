@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\JoinRequest;
 
 class GroupsController extends Controller
 {
@@ -17,20 +17,24 @@ class GroupsController extends Controller
 
     public function index() {
 
-        $groups = Group::all();
+        $groups = Group::whereHas('users', function($q) {
+            $q->where('user_id', '=', Auth::user()->id);
+        })->get();
 
         return view('groups.index', compact('groups'));
     }
 
     public function show(Group $group) {
 
-        //dd($group->users);
-
-        $user_id = Auth::user()->id;
-        $ok = Group::whereHas('users', function($q) use ($user_id) {
-            $q->where('user_id', '=', $user_id);
+        $ok = Group::whereHas('users', function($q) {
+            $q->where('user_id', '=', Auth::user()->id);
         })->get();
-        //dd($ok);
+
+        //$user->id;
+
+        if (false) {
+            return redirect()->route('groups', $group);
+        }
 
         $homeworks = $group->homework;
 
@@ -57,14 +61,17 @@ class GroupsController extends Controller
 
     public function invitation(Group $group) {
 
-        return route('groups.join', compact('group'));
+        return view('groups.join', compact('group'));
     }
 
-    public function join(Group $group) {
+    public function join(JoinRequest $request, Group $group) {
 
-        $user_id = Auth::user()->id;
-        $group->users()->attach($user_id); // TODO add role ->attach($user_id, ['role_id' => ID_user]);
+        if ($request['password'] == $group->password) {
+            return redirect()->route('groups.show', $group->id);
+            $user_id = Auth::user()->id;
+            $group->users()->attach($user_id); // TODO add role ->attach($user_id, ['role_id' => ID_user]);
+        }
 
-        return redirect()->route('groups.show', $group->id);
+        return redirect()->route('groups.index', $group->id);
     }
 }
